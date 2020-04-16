@@ -12,7 +12,8 @@ $CFG->dbuser    = 'moodle';
 $CFG->dbpass    = 'moodle';
 $CFG->prefix    = 'mdl';
 $CFG->dboptions = array (
-  'dbpersist' => 0,
+  'dbpersist' => false,
+  'dbsocket'  => false,
 );
 
 $CFG->wwwroot  = 'http://moodle.local';
