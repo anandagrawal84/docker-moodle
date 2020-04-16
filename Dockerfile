@@ -8,9 +8,9 @@ ENV MOODLE_VERSION=38 \
 # Download Essential Packages
 RUN apt-get update \
     && apt-get install -y \
-        gettext libcurl4-openssl-dev libpq-dev  libxslt-dev \
+        gettext libcurl4-openssl-dev default-mysql-client libxslt-dev \
         libxml2-dev libicu-dev libfreetype6-dev libjpeg62-turbo-dev libmemcached-dev \
-        zlib1g-dev unixodbc-dev libpng-dev libjpeg-dev libpq-dev \
+        zlib1g-dev unixodbc-dev libpng-dev libjpeg-dev  \
         graphviz aspell aspell-pt-br libpspell-dev git-core libcurl4-openssl-dev \
         unzip ghostscript locales apt-transport-https \
         libaio1 libcurl4 libgss3 libpq5 libmemcached11 \
@@ -22,7 +22,7 @@ RUN echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list \
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-configure zip \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install -j$(nproc) intl mysqli pdo pdo_mysql xmlrpc xsl curl zip pgsql opcache soap \
+    && docker-php-ext-install -j$(nproc) intl mysqli pdo pdo_mysql xmlrpc xsl curl zip opcache soap \
     && pecl install memcached redis apcu igbinary \
     && docker-php-ext-enable opcache memcached redis apcu igbinary \
     && echo 'apc.enable_cli = On' >> /usr/local/etc/php/conf.d/docker-php-ext-apcu.ini \

@@ -4,7 +4,7 @@ unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
-$CFG->dbtype    = 'pgsql';
+$CFG->dbtype    = 'mysqli'; # or mariadb
 $CFG->dblibrary = 'native';
 $CFG->dbhost    = 'moodle-database';
 $CFG->dbname    = 'moodle';
