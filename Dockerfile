@@ -41,7 +41,7 @@ RUN mkdir -p /moodle/data && \
     chmod 2775 /moodle && \
     ln -sf /moodle/conf/config.php ${MOODLE_DESTINATION}/config.php
 
+COPY ./docker/moodle-config.php /var/www/html/config.php
+
 # Enable mod_rewrite
 RUN a2enmod rewrite
-
-COPY ./testfs/moodle-config.php /var/www/html/config.php

@@ -26,4 +26,4 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./testfs/moodledata:/moodle/data
+      - ./docker/moodledata:/moodle/data

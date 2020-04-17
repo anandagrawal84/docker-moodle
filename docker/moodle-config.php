@@ -19,6 +19,7 @@ $CFG->dboptions = array (
 $CFG->wwwroot  = getenv('DOMAIN_URL');
 $CFG->dataroot  = '/moodle/data';
 $CFG->admin     = 'admin';
+$CFG->sslproxy = true;
 
 $CFG->directorypermissions = 02775;
 
