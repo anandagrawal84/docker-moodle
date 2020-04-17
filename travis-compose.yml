@@ -15,10 +15,15 @@ services:
     build: ./
     depends_on:
       - database
+    environment:
+      - DB_HOST=moodle
+      - DB_NAME=moodle
+      - DB_USERNAME=moodle
+      - DB_PASSWORD=moodle
+      - DOMAIN_URL=http://localhost
     links:
       - database:moodle-database
     ports:
       - "80:80"
     volumes:
       - ./testfs/moodledata:/moodle/data
-      - ./testfs/moodle-config.php:/var/www/html/config.php:ro

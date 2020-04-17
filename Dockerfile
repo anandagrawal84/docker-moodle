@@ -43,3 +43,5 @@ RUN mkdir -p /moodle/data && \
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
+
+COPY ./testfs/moodle-config.php /var/www/html/config.php

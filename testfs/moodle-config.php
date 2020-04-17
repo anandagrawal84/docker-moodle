@@ -6,17 +6,17 @@ $CFG = new stdClass();
 
 $CFG->dbtype    = 'mysqli'; # or mariadb
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = 'moodle-database';
-$CFG->dbname    = 'moodle';
-$CFG->dbuser    = 'moodle';
-$CFG->dbpass    = 'moodle';
+$CFG->dbhost    = getenv('DB_HOST');
+$CFG->dbname    = getenv('DB_NAME');
+$CFG->dbuser    = getenv('DB_USERNAME');
+$CFG->dbpass    = getenv('DB_PASSWORD');
 $CFG->prefix    = 'mdl';
 $CFG->dboptions = array (
   'dbpersist' => false,
   'dbsocket'  => false,
 );
 
-$CFG->wwwroot  = 'http://moodle.local';
+$CFG->wwwroot  = getenv('DOMAIN_URL');
 $CFG->dataroot  = '/moodle/data';
 $CFG->admin     = 'admin';
 
