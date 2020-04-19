@@ -20,6 +20,7 @@ $CFG->wwwroot  = getenv('DOMAIN_URL');
 $CFG->dataroot  = '/moodle/data';
 $CFG->admin     = 'admin';
 $CFG->sslproxy = true;
+$CFG->themedir  = $CFG->dataroot . '/moodle_themes';
 
 $CFG->directorypermissions = 02775;
 
