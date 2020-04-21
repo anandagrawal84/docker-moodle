@@ -14,7 +14,7 @@ RUN apt-get update \
         graphviz aspell aspell-pt-br libpspell-dev git-core libcurl4-openssl-dev \
         unzip ghostscript locales apt-transport-https \
         libaio1 libcurl4 libgss3 libpq5 libmemcached11 \
-        libmemcachedutil2 libldap-2.4-2 libxml2 libxslt1.1 unixodbc libmcrypt-dev gnupg
+        libmemcachedutil2 libldap-2.4-2 libxml2 libxslt1.1 unixodbc libmcrypt-dev gnupg cron
 RUN echo "deb http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list \
     && echo "deb-src http://packages.dotdeb.org jessie all" >> /etc/apt/sources.list \
     && curl -sS --insecure https://www.dotdeb.org/dotdeb.gpg | apt-key add - \
@@ -42,6 +42,12 @@ RUN mkdir -p /moodle/data && \
     ln -sf /moodle/conf/config.php ${MOODLE_DESTINATION}/config.php
 
 COPY ./docker/moodle-config.php /var/www/html/config.php
+COPY ./docker/cleanup-cron /etc/cron.d/cleanup-cron
+COPY ./docker/docker-entrypoint.sh /usr/local/bin/docker-php-entrypoint
+
+RUN chmod +x /usr/local/bin/docker-php-entrypoint
+RUN chmod 0644 /etc/cron.d/cleanup-cron
+RUN crontab /etc/cron.d/cleanup-cron
 
 # Enable mod_rewrite
 RUN a2enmod rewrite
